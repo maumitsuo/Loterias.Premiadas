@@ -1,0 +1,5 @@
+Projeto ConsoleApp em .NET 10 com C#
+
+- Não existe persistencia de dados;
+- Nomes deve ser declarados em português brasileiro, preservando somente padrões ou nomenclaturas tecnicas amplamente utilizadas.
+- Por se tratar de um projeto extremamente simples, testes devem cobrir 100% do codigo.
