@@ -1,11 +1,13 @@
+using Loterias.Premiadas.Services;
+
 namespace Loterias.Premiadas.Tests;
 
-public class GeradorDeJogosTests
+public class MegasenaTests
 {
     [Fact]
     public void Gerar_DeveRetornarQuantidadeSolicitadaDeJogosValidos()
     {
-        IReadOnlyList<int[]> jogos = GeradorDeJogos.Gerar(1000, new Random(42));
+        IReadOnlyList<int[]> jogos = MegasenaService.Gerar(1000, new Random(42));
 
         Assert.Equal(1000, jogos.Count);
         foreach (int[] jogo in jogos)
@@ -140,20 +142,20 @@ public class GeradorDeJogosTests
     [InlineData(1001)]
     public void Gerar_DeveRejeitarQuantidadeForaDoIntervalo(int quantidade)
     {
-        Assert.Throws<ArgumentOutOfRangeException>(() => GeradorDeJogos.Gerar(quantidade, new Random(1)));
+        Assert.Throws<ArgumentOutOfRangeException>(() => MegasenaService.Gerar(quantidade, new Random(1)));
     }
 
     [Fact]
     public void Gerar_DeveRejeitarFonteAleatoriaNula()
     {
-        Assert.Throws<ArgumentNullException>(() => GeradorDeJogos.Gerar(1, null!));
+        Assert.Throws<ArgumentNullException>(() => MegasenaService.Gerar(1, null!));
     }
 
     private static int[] GerarUmaCandidata(params int[] valores) =>
-        GeradorDeJogos.Gerar(1, new AleatorioControlado(valores)).Single();
+        MegasenaService.Gerar(1, new AleatorioControlado(valores)).Single();
 
     private static int[] GerarUmaCandidata(params int[][] candidatas) =>
-        GeradorDeJogos.Gerar(1, new AleatorioControlado(candidatas.SelectMany(candidata => candidata))).Single();
+        MegasenaService.Gerar(1, new AleatorioControlado(candidatas.SelectMany(candidata => candidata))).Single();
 
     private static void AssertJogoValido(int[] jogo)
     {

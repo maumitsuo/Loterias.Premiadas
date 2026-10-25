@@ -1,6 +1,6 @@
-namespace Loterias.Premiadas;
+namespace Loterias.Premiadas.Services;
 
-public static class GeradorDeJogos
+public static class MegasenaService
 {
     public static IReadOnlyList<int[]> Gerar(int quantidade, Random aleatorio)
     {

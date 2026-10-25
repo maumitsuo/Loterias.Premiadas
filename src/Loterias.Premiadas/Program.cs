@@ -1,32 +1,55 @@
-namespace Loterias.Premiadas;
+namespace Loterias.Premiadas.Services;
 
 public static class Program
 {
     public static void Main()
     {
+        string modalidade;
         while (true)
         {
-            Console.WriteLine("Informe a quantidade de jogos (1 a 1000):");
-            string? entrada = Console.ReadLine();
-            if (entrada is null)
+            Console.WriteLine("Escolha a modalidade (1 - Mega-Sena, 2 - Lotofácil):");
+            string? entradaModalidade = Console.ReadLine();
+            if (entradaModalidade is null)
             {
                 return;
             }
 
-            if (!int.TryParse(entrada, out int quantidade) || quantidade < 1 || quantidade > 1000)
+            if (entradaModalidade is "1" or "2")
             {
-                Console.WriteLine("A quantidade deve ser um número inteiro entre 1 e 1000.");
-                continue;
+                modalidade = entradaModalidade;
+                break;
             }
 
-            IReadOnlyList<int[]> jogos = GeradorDeJogos.Gerar(quantidade, new Random());
-            for (int indice = 0; indice < jogos.Count; indice++)
+            Console.WriteLine("A modalidade deve ser Mega-Sena ou Lotofácil.");
+        }
+
+        int quantidade;
+        while (true)
+        {
+            Console.WriteLine("Informe a quantidade de jogos (1 a 1000):");
+            string? entradaQuantidade = Console.ReadLine();
+            if (entradaQuantidade is null)
             {
-                string numeros = string.Join(", ", jogos[indice].Select(numero => numero.ToString("D2")));
-                Console.WriteLine($"Jogo {indice + 1}: {numeros}");
+                return;
             }
 
-            return;
+            if (int.TryParse(entradaQuantidade, out quantidade)
+                && quantidade is >= 1 and <= 1000)
+            {
+                break;
+            }
+
+            Console.WriteLine("A quantidade deve ser um número inteiro entre 1 e 1000.");
+        }
+
+        IReadOnlyList<int[]> jogos = modalidade == "1"
+            ? MegasenaService.Gerar(quantidade, new Random())
+            : LotofacilService.Gerar(quantidade, new Random());
+
+        for (int indice = 0; indice < jogos.Count; indice++)
+        {
+            string numeros = string.Join(", ", jogos[indice].Select(numero => numero.ToString("D2")));
+            Console.WriteLine($"Jogo {indice + 1:0000}: {numeros}");
         }
     }
 }
