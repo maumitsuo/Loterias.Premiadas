@@ -1,0 +1,32 @@
+Gerador aleatório para jogos da Mega Sena.
+
+O usuario informa a quantidade de jogos que deseja gerar.
+
+Cada jogo é composto por 6 números aleatórios entre 1 e 60.
+
+Em cada jogo, os números não podem se repetir.
+
+Depois de gerado serão descartados os jogos que não atenderem a pelo menos 2 das seguintes regras.
+
+1 - Relação entre números pares e impares. Devem respeitar a proporção de: 
+    3 pares e 3 impares ou 
+    2 pares e 4 impares ou 
+    4 pares e 2 impares.
+
+2 - Dividindo os números entre 1 e 60 nos grupos:
+    - 1 a 5, 11 a 15 e 21 a 25;
+    - 6 a 10, 16 a 20 e 26 a 30;
+    - 31 a 35, 41 a 45 e 51 a 55;
+    - 36 a 40, 46 a 50 e 56 a 60;
+        Os números gerados devem pertencer a pelo menos 3 grupos.
+
+3 - A soma de todos os números deve estar entre 150 e 220
+
+Serão descartados todos os jogos que atenderem a qualquer uma das regras seguintes:
+
+1 - Caso exita mais do que 2 numeros que o final se repita. Por exemplo 11, 21 e 31.
+2 - Caso exista mais do que 2 números sequenciais.
+
+Os jogos descartados devem ser gerados novamente, para respeitar a quantidade de jogos solicitada.
+
+Cada jogo deve ser ordenado do menor para o maior para facilitar a leitura.
