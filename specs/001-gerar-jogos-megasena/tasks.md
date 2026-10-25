@@ -12,16 +12,16 @@
 
 **Objetivo**: criar os projetos .NET 10 e a configuração compartilhada mínima.
 
-- [ ] T001 Criar a aplicação de console .NET 10 e seu ponto de entrada em `src/Loterias.Premiadas/Loterias.Premiadas.csproj` e `src/Loterias.Premiadas/Program.cs`.
-- [ ] T002 [P] Criar o projeto de testes .NET 10 com xUnit e Coverlet como dependências somente de teste em `tests/Loterias.Premiadas.Tests/Loterias.Premiadas.Tests.csproj`.
-- [ ] T003 Criar `Loterias.Premiadas.sln` na raiz do repositório e adicionar os projetos `src/Loterias.Premiadas/Loterias.Premiadas.csproj` e `tests/Loterias.Premiadas.Tests/Loterias.Premiadas.Tests.csproj`, configurando o projeto de testes para referenciar o projeto da aplicação.
-- [ ] T004 [P] Atualizar `.gitignore` para excluir artefatos gerados `**/bin/`, `**/obj/` e `**/TestResults/`, preservando as regras existentes.
+- [X] T001 Criar a aplicação de console .NET 10 e seu ponto de entrada em `src/Loterias.Premiadas/Loterias.Premiadas.csproj` e `src/Loterias.Premiadas/Program.cs`.
+- [X] T002 [P] Criar o projeto de testes .NET 10 com xUnit e Coverlet como dependências somente de teste em `tests/Loterias.Premiadas.Tests/Loterias.Premiadas.Tests.csproj`.
+- [X] T003 Criar `Loterias.Premiadas.sln` na raiz do repositório e adicionar os projetos `src/Loterias.Premiadas/Loterias.Premiadas.csproj` e `tests/Loterias.Premiadas.Tests/Loterias.Premiadas.Tests.csproj`, configurando o projeto de testes para referenciar o projeto da aplicação.
+- [X] T004 [P] Atualizar `.gitignore` para excluir artefatos gerados `**/bin/`, `**/obj/` e `**/TestResults/`, preservando as regras existentes.
 
 ## Fase 2: Fundação
 
 **Objetivo**: confirmar que a estrutura compartilhada permite compilar a aplicação e executar o projeto de testes antes de implementar as histórias.
 
-- [ ] T005 Restaurar e compilar `Loterias.Premiadas.sln` com o SDK .NET 10 e corrigir problemas na configuração dos arquivos `src/Loterias.Premiadas/Loterias.Premiadas.csproj`, `tests/Loterias.Premiadas.Tests/Loterias.Premiadas.Tests.csproj` e `Loterias.Premiadas.sln`.
+- [X] T005 Restaurar e compilar `Loterias.Premiadas.sln` com o SDK .NET 10 e corrigir problemas na configuração dos arquivos `src/Loterias.Premiadas/Loterias.Premiadas.csproj`, `tests/Loterias.Premiadas.Tests/Loterias.Premiadas.Tests.csproj` e `Loterias.Premiadas.sln`.
 
 **Ponto de verificação**: os dois projetos compilam e a suíte de testes pode ser executada.
 
@@ -33,13 +33,13 @@
 
 ### Testes da História de Usuário 1
 
-- [ ] T006 [P] [US1] Criar testes automatizados em `tests/Loterias.Premiadas.Tests/GeradorDeJogosTests.cs` para o contrato `GeradorDeJogos.Gerar(int quantidade, Random aleatorio)`, que retorna `IReadOnlyList<int[]>`; verificar seis números únicos no intervalo de 1 a 60, ordenação crescente, regra de paridade, pertencimento a pelo menos três grupos, soma inclusiva de 150 a 220, aceitação por pelo menos duas regras, rejeição de três números com o mesmo algarismo final, rejeição de sequências de três consecutivos e substituição de candidatas inválidas até atingir a quantidade solicitada.
+- [X] T006 [P] [US1] Criar testes automatizados em `tests/Loterias.Premiadas.Tests/GeradorDeJogosTests.cs` para o contrato `GeradorDeJogos.Gerar(int quantidade, Random aleatorio)`, que retorna `IReadOnlyList<int[]>`; verificar seis números únicos no intervalo de 1 a 60, ordenação crescente, regra de paridade, pertencimento a pelo menos três grupos, soma inclusiva de 150 a 220, aceitação por pelo menos duas regras, rejeição de três números com o mesmo algarismo final, rejeição de sequências de três consecutivos e substituição de candidatas inválidas até atingir a quantidade solicitada.
 
 ### Implementação da História de Usuário 1
 
-- [ ] T007 [P] [US1] Implementar em `src/Loterias.Premiadas/GeradorDeJogos.cs` o contrato `GeradorDeJogos.Gerar(int quantidade, Random aleatorio)`, que retorna `IReadOnlyList<int[]>`; cada jogo deve conter exatamente seis inteiros distintos de 1 a 60, ser ordenado crescentemente e ser aceito somente se cumprir pelo menos duas das regras de paridade (3/3, 2/4 ou 4/2), grupos (pelo menos três dos quatro grupos especificados) e soma (150 a 220, inclusive), sem qualquer algarismo final aparecer mais de duas vezes nem conter três inteiros consecutivos; substituir candidatas rejeitadas até obter a quantidade pedida e permitir jogos iguais em solicitações diferentes.
-- [ ] T008 [US1] Implementar o fluxo de console de caminho válido em `src/Loterias.Premiadas/Program.cs`: solicitar uma quantidade de jogos, gerar os jogos chamando `GeradorDeJogos.Gerar` e apresentar cada um em linha identificada, com seis números formatados em ordem crescente, seguindo `specs/001-gerar-jogos-megasena/contracts/console.md`.
-- [ ] T009 [US1] Criar testes automatizados com entrada e saída de console redirecionadas em `tests/Loterias.Premiadas.Tests/ProgramaTests.cs` para confirmar que uma solicitação válida de 1 jogo apresenta exatamente 1 jogo no formato do contrato, com seis números distintos e em ordem crescente.
+- [X] T007 [P] [US1] Implementar em `src/Loterias.Premiadas/GeradorDeJogos.cs` o contrato `GeradorDeJogos.Gerar(int quantidade, Random aleatorio)`, que retorna `IReadOnlyList<int[]>`; cada jogo deve conter exatamente seis inteiros distintos de 1 a 60, ser ordenado crescentemente e ser aceito somente se cumprir pelo menos duas das regras de paridade (3/3, 2/4 ou 4/2), grupos (pelo menos três dos quatro grupos especificados) e soma (150 a 220, inclusive), sem qualquer algarismo final aparecer mais de duas vezes nem conter três inteiros consecutivos; substituir candidatas rejeitadas até obter a quantidade pedida e permitir jogos iguais em solicitações diferentes.
+- [X] T008 [US1] Implementar o fluxo de console de caminho válido em `src/Loterias.Premiadas/Program.cs`: solicitar uma quantidade de jogos, gerar os jogos chamando `GeradorDeJogos.Gerar` e apresentar cada um em linha identificada, com seis números formatados em ordem crescente, seguindo `specs/001-gerar-jogos-megasena/contracts/console.md`.
+- [X] T009 [US1] Criar testes automatizados com entrada e saída de console redirecionadas em `tests/Loterias.Premiadas.Tests/ProgramaTests.cs` para confirmar que uma solicitação válida de 1 jogo apresenta exatamente 1 jogo no formato do contrato, com seis números distintos e em ordem crescente.
 
 **Ponto de verificação**: a História 1 funciona para entradas válidas e pode ser testada sem implementar a repetição de entradas inválidas da História 2.
 
@@ -51,11 +51,11 @@
 
 ### Testes da História de Usuário 2
 
-- [ ] T010 [US2] Ampliar `tests/Loterias.Premiadas.Tests/ProgramaTests.cs` com casos para entrada vazia, texto, valor não inteiro, zero, número negativo, valor acima de 1.000 e fim de entrada; verificar que entradas inválidas recebem orientação clara e nova solicitação, que uma entrada válida posterior prossegue sem contabilizar tentativas inválidas como jogos e que EOF termina sem gerar jogos.
+- [X] T010 [US2] Ampliar `tests/Loterias.Premiadas.Tests/ProgramaTests.cs` com casos para entrada vazia, texto, valor não inteiro, zero, número negativo, valor acima de 1.000 e fim de entrada; verificar que entradas inválidas recebem orientação clara e nova solicitação, que uma entrada válida posterior prossegue sem contabilizar tentativas inválidas como jogos e que EOF termina sem gerar jogos.
 
 ### Implementação da História de Usuário 2
 
-- [ ] T011 [US2] Atualizar a leitura de quantidade em `src/Loterias.Premiadas/Program.cs` para aceitar somente inteiros de 1 a 1.000, inclusive; em entrada vazia, não inteira, menor que 1 ou maior que 1.000, exibir orientação clara e solicitar novamente; em EOF, encerrar sem gerar jogos; manter o fluxo de geração e apresentação da História 1 para uma entrada válida.
+- [X] T011 [US2] Atualizar a leitura de quantidade em `src/Loterias.Premiadas/Program.cs` para aceitar somente inteiros de 1 a 1.000, inclusive; em entrada vazia, não inteira, menor que 1 ou maior que 1.000, exibir orientação clara e solicitar novamente; em EOF, encerrar sem gerar jogos; manter o fluxo de geração e apresentação da História 1 para uma entrada válida.
 
 **Ponto de verificação**: ambas as histórias funcionam em conjunto; entradas inválidas não geram jogos nem alteram a quantidade final solicitada.
 
@@ -63,8 +63,8 @@
 
 **Objetivo**: demonstrar a cobertura integral exigida pela constituição e confirmar os cenários de validação documentados.
 
-- [ ] T012 Executar `dotnet test .\tests\Loterias.Premiadas.Tests\Loterias.Premiadas.Tests.csproj --collect:"XPlat Code Coverage"` conforme `specs/001-gerar-jogos-megasena/quickstart.md`, inspecionar o relatório em `TestResults` e confirmar 100% de cobertura de linhas e ramificações para todo o código executável da aplicação; corrigir lacunas em `src/Loterias.Premiadas/Program.cs`, `src/Loterias.Premiadas/GeradorDeJogos.cs` ou `tests/Loterias.Premiadas.Tests/ProgramaTests.cs` e `tests/Loterias.Premiadas.Tests/GeradorDeJogosTests.cs`.
-- [ ] T013 Executar os cenários manuais de `specs/001-gerar-jogos-megasena/quickstart.md` e confirmar a mensagem de nova tentativa para entradas inválidas, exatamente 1 jogo para a quantidade `1`, exatamente 1.000 jogos para `1000` e encerramento sem jogos em EOF; corrigir divergências em `src/Loterias.Premiadas/Program.cs` e atualizar o guia `specs/001-gerar-jogos-megasena/quickstart.md` somente se o comportamento aprovado ou os comandos diferirem.
+- [X] T012 Executar `dotnet test .\tests\Loterias.Premiadas.Tests\Loterias.Premiadas.Tests.csproj --collect:"XPlat Code Coverage"` conforme `specs/001-gerar-jogos-megasena/quickstart.md`, inspecionar o relatório em `TestResults` e confirmar 100% de cobertura de linhas e ramificações para todo o código executável da aplicação; corrigir lacunas em `src/Loterias.Premiadas/Program.cs`, `src/Loterias.Premiadas/GeradorDeJogos.cs` ou `tests/Loterias.Premiadas.Tests/ProgramaTests.cs` e `tests/Loterias.Premiadas.Tests/GeradorDeJogosTests.cs`.
+- [X] T013 Executar os cenários manuais de `specs/001-gerar-jogos-megasena/quickstart.md` e confirmar a mensagem de nova tentativa para entradas inválidas, exatamente 1 jogo para a quantidade `1`, exatamente 1.000 jogos para `1000` e encerramento sem jogos em EOF; corrigir divergências em `src/Loterias.Premiadas/Program.cs` e atualizar o guia `specs/001-gerar-jogos-megasena/quickstart.md` somente se o comportamento aprovado ou os comandos diferirem.
 
 ## Dependências e Ordem de Execução
 
