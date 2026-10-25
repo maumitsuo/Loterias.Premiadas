@@ -1,3 +1,4 @@
+using Loterias.Premiadas.Services;
 using System.Text.RegularExpressions;
 
 namespace Loterias.Premiadas.Tests;

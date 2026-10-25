@@ -1,4 +1,4 @@
-namespace Loterias.Premiadas;
+namespace Loterias.Premiadas.Services;
 
 public static class Program
 {
@@ -43,13 +43,13 @@ public static class Program
         }
 
         IReadOnlyList<int[]> jogos = modalidade == "1"
-            ? GeradorDeJogos.Gerar(quantidade, new Random())
-            : GeradorDeJogosLotofacil.Gerar(quantidade, new Random());
+            ? MegasenaService.Gerar(quantidade, new Random())
+            : LotofacilService.Gerar(quantidade, new Random());
 
         for (int indice = 0; indice < jogos.Count; indice++)
         {
             string numeros = string.Join(", ", jogos[indice].Select(numero => numero.ToString("D2")));
-            Console.WriteLine($"Jogo {indice + 1}: {numeros}");
+            Console.WriteLine($"Jogo {indice + 1:0000}: {numeros}");
         }
     }
 }

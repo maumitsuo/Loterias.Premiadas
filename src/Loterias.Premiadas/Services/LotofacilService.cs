@@ -1,6 +1,6 @@
-namespace Loterias.Premiadas;
+namespace Loterias.Premiadas.Services;
 
-public static class GeradorDeJogosLotofacil
+public static class LotofacilService
 {
     public static IReadOnlyList<int[]> Gerar(int quantidade, Random aleatorio)
     {

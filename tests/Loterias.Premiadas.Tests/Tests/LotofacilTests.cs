@@ -1,6 +1,8 @@
+using Loterias.Premiadas.Services;
+
 namespace Loterias.Premiadas.Tests;
 
-public class GeradorDeJogosLotofacilTests
+public class LotofacilTests
 {
     [Theory]
     [InlineData("1,2,3,4,5,6,7,8,9,10,11,12,13,16,21", 8, 10)]
@@ -36,7 +38,7 @@ public class GeradorDeJogosLotofacilTests
     [Fact]
     public void Gerar_DeveRetornarQuantidadeSolicitadaDeJogosValidos()
     {
-        IReadOnlyList<int[]> jogos = GeradorDeJogosLotofacil.Gerar(1000, new Random(42));
+        IReadOnlyList<int[]> jogos = LotofacilService.Gerar(1000, new Random(42));
 
         Assert.Equal(1000, jogos.Count);
         Assert.All(jogos, AssertJogoValido);
@@ -80,21 +82,21 @@ public class GeradorDeJogosLotofacilTests
     public void Gerar_DeveRejeitarQuantidadeForaDoIntervalo(int quantidade)
     {
         Assert.Throws<ArgumentOutOfRangeException>(
-            () => GeradorDeJogosLotofacil.Gerar(quantidade, new Random(1)));
+            () => LotofacilService.Gerar(quantidade, new Random(1)));
     }
 
     [Fact]
     public void Gerar_DeveRejeitarFonteAleatoriaNula()
     {
         Assert.Throws<ArgumentNullException>(
-            () => GeradorDeJogosLotofacil.Gerar(1, null!));
+            () => LotofacilService.Gerar(1, null!));
     }
 
     private static int[] GerarUmaCandidata(params int[] valores) =>
-        GeradorDeJogosLotofacil.Gerar(1, new AleatorioControlado(valores)).Single();
+        LotofacilService.Gerar(1, new AleatorioControlado(valores)).Single();
 
     private static int[] GerarUmaCandidata(params int[][] candidatas) =>
-        GeradorDeJogosLotofacil.Gerar(
+        LotofacilService.Gerar(
             1,
             new AleatorioControlado(candidatas.SelectMany(candidata => candidata))).Single();
 
