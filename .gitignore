@@ -43,6 +43,12 @@ ScaffoldingReadMe.txt
 ~$*
 *~
 CodeCoverage/
+*.user
+*.suo
+packages/
+Thumbs.db
+*.tmp
+*.swp
 
 # MSBuild Binary and Structured Log
 *.binlog
