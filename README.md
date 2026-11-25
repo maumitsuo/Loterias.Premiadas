@@ -8,7 +8,7 @@ Aplicação de console em C# para gerar combinações de jogos da Mega-Sena e da
 
 - Escolher entre Mega-Sena e Lotofácil.
 - Solicitar de 1 a 1.000 jogos por execução.
-- Gerar números distintos e em ordem crescente, substituindo combinações que não atendam aos critérios da modalidade.
+- Gerar jogos com números distintos e em ordem crescente, sem filtros estatísticos: qualquer combinação sem números repetidos pode ser sorteada.
 - Receber mensagens de validação e tentar novamente quando a modalidade ou a quantidade informada for inválida.
 
 ### Critérios aplicados
@@ -16,15 +16,12 @@ Aplicação de console em C# para gerar combinações de jogos da Mega-Sena e da
 **Mega-Sena**
 
 - Seis números distintos entre 1 e 60.
-- A combinação precisa atender a pelo menos duas destas regras: ter de 2 a 4 números pares; contemplar pelo menos 3 grupos numéricos; ou ter soma entre 150 e 220.
-- São descartadas combinações com mais de dois números terminados no mesmo algarismo ou com uma sequência de três ou mais números consecutivos.
 
 **Lotofácil**
 
 - Quinze números distintos entre 1 e 25.
-- De 7 a 9 números ímpares.
-- De 9 a 11 números da moldura.
-- Pelo menos um número de cada um dos cinco grupos sequenciais: 01–05, 06–10, 11–15, 16–20 e 21–25.
+
+Não há outros critérios: paridade, soma, grupos, finais, sequências ou moldura não são verificados. Jogos iguais podem aparecer na mesma solicitação.
 
 ## Requisitos
 
